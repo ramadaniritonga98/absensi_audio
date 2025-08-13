@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi Berhasil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <h1>✅ Absensi Berhasil</h1>
 
-    <audio id="successSound" autoplay>
+    <!-- Audio autoplay (dimulai mute lalu di-unmute lewat JS) -->
+    <audio id="successSound" autoplay muted>
         <source src="absensi-berhasil.mp3" type="audio/mpeg">
         Browser Anda tidak mendukung audio.
     </audio>
 
     <script>
-        // Pastikan suara diputar setelah halaman dimuat
         window.addEventListener('load', () => {
-            document.getElementById('successSound').play()
-                .catch(err => console.log("Autoplay diblokir, user harus klik dulu:", err));
+            const audio = document.getElementById('successSound');
+            audio.muted = false; // unmute
+            audio.play().catch(err => console.log("Autoplay diblokir:", err));
         });
     </script>
 </body>
